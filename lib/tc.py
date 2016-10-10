@@ -72,7 +72,7 @@ def which(executable):
     raise BadKarma(msg)
 
 
-def set_config(key, value):
+def set_tower_cli_config(key, value):
     """
     Calls tower-cli and overwrite the given key with the given value in the
     configuration file
@@ -92,7 +92,30 @@ def set_config(key, value):
         print("Configuration for {0} overwritten".format(key))
 
 
-def overwrite_config():
+def set_tc_config(key, value, config, config_file=CONFIG_FILE):
+    """
+    Modifies the tower-cli configuration for values which are not supported by
+    tower-cli
+    Args:
+        key (str): configuration key to update
+        value (str): configuration value to update
+    """
+    config.set('general',key, value)
+    cfgfile = open(config_file, "w")
+    config.write(cfgfile)
+    cfgfile.close()
+    print("Configuration for {0} overwritten".format(key))
+
+
+def set_config(key, value, config=None):
+    tower_cli_config = ['host', 'username', 'password',' verify_ssl']
+    if key in tower_cli_config:
+        set_tower_cli_config(key, value)
+    else:
+        set_tc_config(key, value, config)
+
+
+def overwrite_config_tower_cli():
     """
     Search the environment for local set configuration. If values set in the
     environment variables then overwrite the tower-cli config with these values
@@ -110,6 +133,15 @@ def overwrite_config():
     if verify_ssl:
         set_config('verify_ssl', verify_ssl)
 
+def overwrite_config_tower_companion(config):
+    """
+    Search the environment for local set configuration. If values set in the
+    environment variables then overwrite the tower-cli config with these values
+    """
+    reckless_mode = os.environ.get('TC_RECKLESS_MODE')
+    if reckless_mode:
+        set_config('reckless_mode', reckless_mode, config)
+
 
 def get_config(config_file=CONFIG_FILE):
     """
@@ -122,18 +154,23 @@ def get_config(config_file=CONFIG_FILE):
         config (ConfigParser): a nice convenient way to carry your configuration
             with you. Believe me it's the new black.
     """
-    overwrite_config()
+    # This step also makes sure that the configuration will be created if at least one
+    # value is given as environment variable
+    overwrite_config_tower_cli()
+
     if not os.path.isfile(config_file):
         raise BadKarma('No configuration set. Refusing to proceed any further')
     config = ConfigParser()
     config.read(config_file)
+    # We know we have a config file which we can modify if needed
+    overwrite_config_tower_companion(config)
     if config.has_option('general', 'reckless_mode'):
         if config.get('general', 'reckless_mode') == 'yes':
-            reckless_mode()
+            set_reckless_mode()
     return config
 
 
-def reckless_mode():
+def set_reckless_mode():
     """
     Live fast, die young, get hacked and cry.
     If you're here, you have bad SSL certficates
