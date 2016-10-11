@@ -32,6 +32,13 @@ in your home directory or in any other directory describe in the ansible
 tower-cli configuration section. Please refer to the [ansible-tower-cli
 documentation page](https://github.com/ansible/tower-cli)
 
+You can also overwrite the configuration with environment variables:
+
+    - TC_USERNAME=ansibleuser
+    - TC_PASSWORD=ansiblepassword
+    - TC_HOST=ansiblehost.com
+    - TC_VERIFY_SSL=false
+    - TC_RECKLESS_MODE=yes
 
 
 reckless mode
