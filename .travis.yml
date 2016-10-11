@@ -9,7 +9,7 @@ install:
 
 script:
    - tox
-   - travis-sphinx --source docs build
+   - travis-sphinx build
 
 after_success:
   - coveralls
