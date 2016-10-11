@@ -32,7 +32,6 @@ tower-cli configuration section. Please refer to the [ansible-tower-cli
 documentation page](https://github.com/ansible/tower-cli)
 
 
-
 reckless mode
 -------------
 If you use valid SSL certificates, skip this section. If your ansible tower
