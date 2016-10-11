@@ -5,10 +5,12 @@ python:
  - "3.5"
 
 install:
-  - pip install tox-travis coveralls
+  - pip install tox-travis coveralls travis-sphinx
 
 script:
-   tox
+   - tox
+   - travis-sphinx build
 
 after_success:
-  coveralls
+  - coveralls
+  - travis-sphinx deploy
