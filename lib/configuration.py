@@ -59,7 +59,7 @@ def set_tc_config(key, value, config, config_file=CONFIG_FILE):
 def set_config(key, value, config=None):
     """
     Calles the right set configuration function based on the value which is
-    to modify
+    to modify.
     Args:
         key (str): configuration key to update
         value (str): configuration value to update
