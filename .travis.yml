@@ -9,7 +9,7 @@ install:
 
 script:
    - tox
-   - prospector --strictness low lib/*
+   - prospector --strictness medium lib/* && true # after refactoring this should fail the build if there are errors
 
 after_success:
   - coveralls
