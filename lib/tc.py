@@ -31,6 +31,7 @@ SUCCESS = 1
 # password = super_secret
 # verify_ssl = false
 
+
 def get_template_id_from_name(template_name):
     """
     Returns a template id from a template name

@@ -5,11 +5,11 @@ python:
  - "3.5"
 
 install:
-  - pip install tox-travis coveralls pylint
+  - pip install tox-travis coveralls prospector
 
 script:
    - tox
-   - for f in lib/*; do pylint $f --errors-only; done
+   - prospector --strictness high lib/*
 
 after_success:
   - coveralls
