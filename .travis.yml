@@ -9,7 +9,7 @@ install:
 
 script:
    - tox
-   - prospector --strictness high lib/*
+   - prospector --strictness low lib/*
 
 after_success:
   - coveralls
