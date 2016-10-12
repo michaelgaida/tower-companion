@@ -80,7 +80,8 @@ class Config(object):
         Saves current configuration to config_file
         """
         config = self.configparser
-        config.write(self.config_file)
+        with open(self.config_file, 'w') as out_config:
+            config.write(out_config)
 
     def _add_general_section(self):
         """
