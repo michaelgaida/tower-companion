@@ -6,7 +6,7 @@ tower_companion.egg-info/
 *.rpm
 # files created by tests
 .cache/
-.coverage*
+.coverage
 .eggs/
 .tox/
 htmlcov-py*/

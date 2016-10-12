@@ -4,11 +4,13 @@ Collection of utils for the tower companion
 """
 import os
 
+
 class BadKarma(Exception):
     """
     What goes around comes around
     """
     pass
+
 
 def which(executable):
     """
@@ -34,3 +36,10 @@ def which(executable):
     msg = "{0} is not in your path. Giving up. Have a good day".format(
         executable)
     raise BadKarma(msg)
+
+
+def tower_cli_executable():
+    """
+    Returns the full path to tower-cli executable
+    """
+    return which('tower-cli')
