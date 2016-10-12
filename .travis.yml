@@ -9,7 +9,7 @@ install:
 
 script:
    - tox
-   - cd lib; prospector --strictness medium *.py || true # after refactoring this should fail the build if there are errors
+   - cd lib; prospector --strictness high *.py
 
 after_success:
   - coveralls
