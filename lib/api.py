@@ -31,7 +31,8 @@ class APIv1(object):
         try:
             self.host = config.get('host')
         except ConfigError as error:
-            msg = "To fix this problem define a host in the configuration."
+            msg = "Missing key from configuration, {0}.".format(error)
+            msg = "{0} Please check your configuration.".format(msg)
             raise APIError(msg)
 
         self.api_url = "https://{0}/api/v1".format(self.host)
@@ -45,16 +46,11 @@ class APIv1(object):
         """
         config = self.config
         try:
-            username = config.get('username')
+            return (config.get('username'), config.get('password'))
         except ConfigError as error:
-            msg = "To fix this problem define a username in the configuration."
+            msg = "Missing key from configuration, {0}.".format(error)
+            msg = "{0} Please check your configuration.".format(msg)
             raise APIError(msg)
-        try:
-            password = config.get('password')
-        except ConfigError as error:
-            msg = "To fix this problem define a password in the configuration."
-            raise APIError(msg)
-        return (username, password)
 
     def _verify_ssl(self):
         """
@@ -64,7 +60,8 @@ class APIv1(object):
         try:
             return config.getboolean('verify_ssl')
         except ConfigError as error:
-            msg = "To fix this problem define verify_ssl in the configuration."
+            msg = "Missing key from configuration, {0}.".format(error)
+            msg = "{0} Please check your configuration.".format(msg)
             raise APIError(msg)
 
 
