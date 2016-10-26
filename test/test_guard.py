@@ -290,7 +290,6 @@ def test_ad_hoc_and_monitor(monkeypatch):
 
     guard = basic_guard()
     ad_hoc = AdHoc()
-    ad_hoc.extra_vars = []
     guard.ad_hoc_and_monitor(ad_hoc, output_format='any', sleep_interval=0.0)
 
     monkeypatch.setattr('lib.tc.Guard.ad_hoc', mock_guard_error)
