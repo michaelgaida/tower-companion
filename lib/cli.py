@@ -100,6 +100,25 @@ def cli_kick(template_name, extra_vars):
         print(msg)
         sys.exit(1)
 
+@click.command()
+@click.option('--project-name', help='Project name', required=True)
+def cli_update_project(project_name):
+    """
+    Update a project from the command line
+    """
+    try:
+        # verify configuration
+        config = Config(config_file())
+        guard = Guard(config)
+        project_id = guard.get_project_id(project_name)
+        guard.update_project(project_id=project_id)
+        print('Started updating project: {0}'.format(project_name))
+    except GuardError as error:
+        msg = 'Error updating project: {0} - {1}'.format(project_name,
+                                                            error)
+        print(msg)
+        sys.exit(1)
+
 
 @click.command()
 @click.option('--job-id', help='Job id to monitor', required=True)
