@@ -178,7 +178,7 @@ class APIv1(object):
         Returns a json object with data about name
 
         Args:
-            name (str): name of the template
+            name (str): name of the project
 
         Returns:
             (json object)
