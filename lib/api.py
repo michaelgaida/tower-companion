@@ -21,6 +21,7 @@ class APIv1(object):
     """
     APIv1
     """
+    LONG_PAGING = 10000
     # pylint: disable=E1101
     # disables:
     # E: Instance of 'LookupDict' has no 'ok' member (no-member)
@@ -202,7 +203,7 @@ class APIv1(object):
         Raises:
             APIError
         """
-        params = {'page_size': '10000'}
+        params = {'page_size': self.LONG_PAGING}
         return self._get_data(endpoint='roles', params=params)
 
     def user_data(self, username):

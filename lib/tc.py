@@ -77,6 +77,11 @@ class Guard(object):
                     (resource_type.lower() == 'job template') and
                     (resource_name.lower() == template_name.lower())):
                     return role['id']
+            # if we are here, we didnt find any suitable role
+            msg = "No role found for template '{0}' ".format(template_name)
+            msg = "{0}with permissions {1}. ".format(msg, permission)
+            msg = "{0}Please make sure that a suitable role exists".format(msg)
+            raise GuardError(msg)
         except APIError as error:
             raise GuardError(error)
 
@@ -95,6 +100,9 @@ class Guard(object):
         api = self.api
         try:
             data = api.user_data(username)
+            if data['count'] == 0:
+                msg = "No user '{0}' found".format(username)
+                raise GuardError(msg)
             return data['results'][0]['id']
         except APIError as error:
             raise GuardError(error)
