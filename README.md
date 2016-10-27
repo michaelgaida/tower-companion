@@ -351,3 +351,42 @@ example:
 
     you can download the full output from:
     https://<ansible tower instance>/api/v1/jobs/20895/stdout/?format=txt_download
+
+
+### <a name="template_permissions"></a>
+template_permissions
+----------------
+You use this template_permissions functionality, if you want to grand
+permissions to a user for a specific job-template
+
+Params:
+
+-  username: Ansible tower user name
+-  template-name: Ansible tower template name
+
+Returns:
+
+-  exit code 0 if the job completed without errors
+-  exit code 1 if any issues
+
+usage:
+
+
+    Usage: template_permissions [OPTIONS]
+
+      This sets the template permissions for a user
+
+    Options:
+      --username TEXT                 User to grant permissions  [required]
+      --template-name TEXT            Template to grant permissions for
+                                      [required]
+      --permission [read|execute|admin]
+                                      Type of permission
+      --help                          Show this message and exit.
+
+example:
+
+    $ template_permissions --username Wilhelm \
+                           --template-name "Bierbrauer" \
+                           --permission admin
+    User Wilhelm successfully granted admin permissions for template Bierbrauer
