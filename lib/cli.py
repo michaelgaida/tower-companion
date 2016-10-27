@@ -242,7 +242,7 @@ def cli_ad_hoc(inventory, machine_credential, module_name, job_type,
 @click.option('--username', help='User to grant permissions', required=True)
 @click.option('--template-name', help='Template to grant permissions for',
               required=True)
-@click.option('--permission', type=click.Choice(['Read', 'Execute', 'Admin']),
+@click.option('--permission', type=click.Choice(['read', 'execute', 'admin']),
               help='Type of permission', default='read')
 def cli_template_permissions(username, template_name, permission):
     """
