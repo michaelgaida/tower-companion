@@ -236,7 +236,7 @@ class Guard(object):
         """
         api = self.api
         try:
-            result = api.update_user_role(user_id, role_id)
+            api.update_user_role(user_id, role_id)
         except APIError as error:
             raise GuardError(error)
 
