@@ -104,6 +104,8 @@ class Guard(object):
                 msg = "No user '{0}' found".format(username)
                 raise GuardError(msg)
             return data['results'][0]['id']
+        except APIError as error:
+            raise GuardError(error)
 
     def get_project_id(self, project_name):
         """

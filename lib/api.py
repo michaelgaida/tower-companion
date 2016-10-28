@@ -237,7 +237,7 @@ class APIv1(object):
         Raises:
             APIError
         """
-        return self._get_data(name=name, endpoint='projects')
+        return self._get_data_by_name(name=name, endpoint='projects')
 
     def launch_template_id(self, template_id, extra_vars):
         """

@@ -242,7 +242,6 @@ def test_update_user_role(monkeypatch):
         mock = MockRequest()
         mock.text = fake_text
         mock.status_code = 204
-        mock.status_code = 200
         return mock
 
     def mockerror(*args, **kwargs):
@@ -261,6 +260,8 @@ def test_update_project_id(monkeypatch):
     def mockreturn(*args, **kwargs):
         mock = MockRequest()
         mock.text = fake_text
+        mock.status_code = 200
+        mock.reason = "This failed"
         return mock
 
     def mockerror(*args, **kwargs):
