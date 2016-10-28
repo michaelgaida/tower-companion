@@ -17,6 +17,7 @@ Tower companion provides the following command line scripts:
 -  [kick_and_monitor](#kick_and_monitor)
 -  [ad_hoc](#ad_hoc)
 -  [ad_hoc_and_monitor](#ad_hoc_and_monitor)
+-  [template_permissions](#template_permissions)
 
 
 Requirements
