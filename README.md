@@ -17,6 +17,7 @@ Tower companion provides the following command line scripts:
 -  [kick_and_monitor](#kick_and_monitor)
 -  [ad_hoc](#ad_hoc)
 -  [ad_hoc_and_monitor](#ad_hoc_and_monitor)
+-  [update_project](#update_project)
 
 
 Requirements
@@ -352,6 +353,7 @@ example:
     you can download the full output from:
     https://<ansible tower instance>/api/v1/jobs/20895/stdout/?format=txt_download
 
+
 ### <a name="update_project"></a>
 update_project
 ----
@@ -379,5 +381,5 @@ usage:
 
 example:
 
-    $ update_project --project-name avaya_web
+    $ update_project --project-name jboss
     Started job: 12345
