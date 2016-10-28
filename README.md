@@ -18,6 +18,7 @@ Tower companion provides the following command line scripts:
 -  [ad_hoc](#ad_hoc)
 -  [ad_hoc_and_monitor](#ad_hoc_and_monitor)
 -  [template_permissions](#template_permissions)
+-  [update_project](#update_project)
 
 
 Requirements
@@ -391,3 +392,34 @@ example:
                            --template-name "Bierbrauer" \
                            --permission admin
     User Wilhelm successfully granted admin permissions for template Bierbrauer
+
+
+### <a name="update_project"></a>
+update_project
+----
+This script updates a project (SCM Update).
+
+Params:
+
+-  project-name: Ansible tower project name
+
+Returns:
+
+-  exit code 0 if the project update has been started successfully
+-  exit code 1 if any issues
+
+usage:
+
+    update_project --help
+    Usage: update_project [OPTIONS]
+
+      Update a project from the command line
+
+    Options:
+      --project-name TEXT  Project name  [required]
+      --help               Show this message and exit.
+
+example:
+
+    $ update_project --project-name jboss
+    Started job: 12345
