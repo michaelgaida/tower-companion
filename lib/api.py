@@ -144,7 +144,7 @@ class APIv1(object):
             msg = 'Multiple id related to "{0}"'.format(name)
         raise APIError(msg)
 
-    def _get_data(self, endpoint, params={}):
+    def _get_data(self, endpoint, params):
         """
         Returns a json object with data
 
